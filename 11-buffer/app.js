@@ -1,12 +1,12 @@
-// Fixed-size chuck of memory
-// array of integers, byte of data
+// Fixed-size chuck of memory -> 고정된 사이즈의 메모리
+// array of integers, byte of data -> 데이터에 있는 바이트 그 자체
 const fs = require('fs');
 
-const buf = Buffer.from('Hi');
-console.log(buf);
-console.log(buf.length);
-console.log(buf[0]); // 아스키 코드 상 문자열 번호 출력
-console.log(buf[1]);
+const buf = Buffer.from('Hi'); // 버퍼 생성
+console.log(buf); // <Buffer 48 69>
+console.log(buf.length); // 2
+console.log(buf[0]); // 아스키 코드 상 문자열 번호 출력 -> 72
+console.log(buf[1]); // 105
 console.log(buf.toString()); // 'Hi'
 
 // create
