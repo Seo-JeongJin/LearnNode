@@ -1,0 +1,23 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "test project",
+  "keywords": [
+    "test"
+  ],
+  "license": "ISC",
+  "author": "Jina",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app",
+    "jina": "node app"
+  },
+  "dependencies": {
+    "underscore": "^1.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
