@@ -9,7 +9,7 @@ const app = express(); // 'app'이라는 이름으로 서버 객체를 만듦
 // 들어오는 요청의 본문(body)이 JSON 형태라면 자동으로 파싱(분석)해서 자바스크립트 객체로 만들어줌
 app.use(express.json());
 
-// 📂 [경로 1] 동기(Synchronous) 방식으로 파일 읽기 (비추천 🙅‍♂️)
+// [경로 1] 동기(Synchronous) 방식으로 파일 읽기
 app.get('/file1', (req, res) => {
   // 1. (주석 처리된 부분) : 콜백(Callback) 방식
   // fs.readFile('/file1.txt', (err, data) => { // 파일을 읽고 나서 함수를 실행
@@ -20,7 +20,7 @@ app.get('/file1', (req, res) => {
 
   // 2. 동기(Sync) 방식 : 현재 실행 중인 코드
   try {
-    // ⚠️ 중요: readFileSync는 파일을 다 읽을 때까지 코드 실행을 '멈추고' 기다림
+    // readFileSync는 파일을 다 읽을 때까지 코드 실행을 '멈추고' 기다림
     // 파일이 크다면 그동안 다른 사용자의 요청을 처리 못 할 수도 있음
     const data = fs.readFileSync('/file1.txt');
 
@@ -31,7 +31,7 @@ app.get('/file1', (req, res) => {
   }
 });
 
-// 📂 [경로 2] 비동기(Promise) 방식으로 파일 읽기 (체이닝 방식 🔗)
+// [경로 2] 비동기(Promise) 방식으로 파일 읽기 (체이닝 방식)
 app.get('/file2', (req, res) => {
   fsAsync
     .readFile('/file2.txt') // 1. 파일을 비동기로 읽음. (기다리지 않고 Promise 반환)
@@ -45,7 +45,7 @@ app.get('/file2', (req, res) => {
     });
 });
 
-// 📂 [경로 3] 비동기(Async/Await) 방식으로 파일 읽기 (가장 추천 👍)
+// [경로 3] 비동기(Async/Await) 방식으로 파일 읽기
 // 콜백이나 .then() 체이닝보다 코드가 직관적이고 읽기 쉬움
 app.get('/file3', async (req, res) => {
   // 비동기 함수임을 알리기 위해 'async' 키워드 붙임
@@ -61,7 +61,7 @@ app.get('/file3', async (req, res) => {
   }
 });
 
-// 🛡️ 에러 처리 핸들러 (Safety Net)
+// 에러 처리 핸들러 (Safety Net)
 // 버전 5 이하에서는: require('express-async-errors'); 같은 라이브러리가 필요했지만,
 
 // Express 5부터는 비동기 에러도 자동으로 이 미들웨어로 넘어옴
